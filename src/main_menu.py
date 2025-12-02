@@ -2,6 +2,7 @@ import os
 from operations.addition import addition
 from operations.subtraction import subtraction
 from operations.multiplication import multiplication
+from operations.division import division
 
 class Menu:
     def __init__(self) -> None:
@@ -17,9 +18,6 @@ class Menu:
         print("2 - Substraction")
         print("3 - Multiplication")
         print("4 - Division")
-        print("5 - Puissance")
-        print("6 - Racine carée")
-        print("7 - Historique")
         print("0 - Quitter")
             
     def navigation(self):
@@ -45,7 +43,15 @@ class Menu:
                 os.system('cls' if os.name == 'nt' else 'clear')
                 self.calculate()
                 result = multiplication(self.first_number, self.second_number)
-                print(f"{self.first_number} - {self.second_number} = {result}")
+                print(f"{self.first_number} x {self.second_number} = {result}")
+                input("Appuyez sur une touche...")
+                os.system('cls' if os.name == 'nt' else 'clear')
+                self.user_selected_option = False
+            case 4:
+                os.system('cls' if os.name == 'nt' else 'clear')
+                self.calculate()
+                result = division(self.first_number, self.second_number)
+                print(f"{self.first_number} / {self.second_number} = {result: .2f}")
                 input("Appuyez sur une touche...")
                 os.system('cls' if os.name == 'nt' else 'clear')
                 self.user_selected_option = False

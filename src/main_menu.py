@@ -1,8 +1,13 @@
 import os
+from operations.addition import addition
 
 class Menu:
     def __init__(self) -> None:
         self.user_selected_option: bool = False
+        self.first_number: float
+        self.second_number: float
+        self.first_user_input: str
+        self.second_user_input: str
         
     def interface(self):
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -19,6 +24,11 @@ class Menu:
     def navigation(self):
         inputed_number: int = self.user_interaction()
         match inputed_number:
+            case 1:
+                result = addition(3,5)
+                print(result)
+                input()
+                self.user_selected_option = False
             case 0:
                 self.user_selected_option = True
             case _:
@@ -43,3 +53,6 @@ class Menu:
         while self.user_selected_option == False:
             self.interface()
             self.navigation()
+
+calculator = Menu()
+calculator.display_menu()

@@ -25,7 +25,9 @@ class Menu:
         inputed_number: int = self.user_interaction()
         match inputed_number:
             case 1:
-                result = addition(3,5)
+                os.system('cls' if os.name == 'nt' else 'clear')
+                self.calculate()
+                result = addition(self.first_number, self.second_number)
                 print(result)
                 input()
                 self.user_selected_option = False
@@ -47,6 +49,32 @@ class Menu:
             return True
         else:
             print("Erreur: Seuls les chiffres sont acceptés")
+            return False
+    
+    def calculate(self):
+        while True:
+            self.ask_user_inputs()
+            if self.validate_inputs(self.first_user_input, self.second_user_input):
+                self.first_number = float(self.first_user_input)
+                self.second_number = float(self.second_user_input)
+                break
+            else:
+                print("Erreur: Veuillez entrer des nombres valides")
+                continue
+        
+    def ask_user_inputs(self):
+        self.first_user_input = input("Insérez un premier nombre")
+        self.second_user_input = input("Insérez un deuxième nombre")
+    
+    def validate_inputs(self, input_1: str, input_2: str):
+        try:
+            float(input_1)
+            try:
+                float(input_2)
+                return True
+            except ValueError:
+                return False
+        except ValueError:
             return False
     
     def display_menu(self):

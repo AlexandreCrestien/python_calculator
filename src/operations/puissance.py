@@ -1,2 +1,2 @@
-def puissance(a, b ):
+def puissance(a : float, b:int ):
     return a ** b 
